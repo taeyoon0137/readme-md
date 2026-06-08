@@ -1,9 +1,12 @@
 <!--
-  This file is a template reference for agents.
+  This file (PRESET.md) is a universal template reference for agents.
+  It is NOT a generated artifact itself; this repository's actual README source-of-truth is resources/README.preset.md.
   When applying it to another repository, create resources/README.preset.md in that repository.
   Use this file as the structural starting point before reading any existing README.md in the target repository.
   Fill this structure with verified project facts; do not derive the preset structure from an existing README.md.
   The generated README.md should keep the auto-generated-file comment below.
+  The "if present" wording in the comment below is intentionally generic for the universal template;
+  this repository's own resources/README.preset.md drops it and names the script directly.
 -->
 
 <!--
@@ -18,20 +21,25 @@
   To replace the hero image, add resources/hero.png.
   For color-scheme-specific images, add resources/hero.light.png and resources/hero.dark.png.
   JPG files with the same names are also supported.
+  When both a generic hero.png/hero.jpg and color-scheme-specific images exist, the light/dark images are drawn on top of the generic one in their matching mode.
   Then run the README generation command to embed existing hero images into resources/readme-hero.svg.
+-->
+<!--
+  Write the final alt text directly here.
+  Do not leave ${projectName} or other generated placeholders in alt.
 -->
 <p align="center">
   <a href="${repositoryUrl}">
-    <img src="../resources/readme-hero.svg" alt="${projectName} hero image" width="100%" />
+    <img src="../resources/readme-hero.svg" alt="프로젝트 이름 hero image" width="100%" />
   </a>
 </p>
 
 <!--
-  Write the final README title directly here.
-  Do not leave ${projectName}, ${displayName}, package name, or generated placeholders in the H1.
+  Write the final README title and one-line description directly here.
+  Do not leave ${projectName}, ${displayName}, ${description}, package name, or generated placeholders in the H1 or description.
 -->
 <h1 align="center">프로젝트 이름</h1>
-<p align="center">${description}</p>
+<p align="center">한 줄 설명</p>
 
 <!--
   Badge block should include the project's primary technology stack.
