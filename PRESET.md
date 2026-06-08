@@ -1,6 +1,8 @@
 <!--
   This file is a template reference for agents.
   When applying it to another repository, create resources/README.preset.md in that repository.
+  Use this file as the structural starting point before reading any existing README.md in the target repository.
+  Fill this structure with verified project facts; do not derive the preset structure from an existing README.md.
   The generated README.md should keep the auto-generated-file comment below.
 -->
 
@@ -27,6 +29,11 @@
 <h1 align="center">${displayName}</h1>
 <p align="center">${description}</p>
 
+<!--
+  Badge block should include the project's primary technology stack.
+  If repository version/status is important, split badges into two centered rows:
+  first repository/version/status, then primary technologies.
+-->
 ${badgeBlock}
 
 <!--
