@@ -28,7 +28,9 @@ REPOSITORY_URL=""
 PACKAGE_MANAGER=""
 
 if [ -f "$PACKAGE_JSON_FILE" ]; then
-  PACKAGE_INFO="$(node -e '
+  PACKAGE_INFO=""
+  if command -v node >/dev/null 2>&1; then
+    PACKAGE_INFO="$(node -e '
 const packageJson = require(process.argv[1]);
 const repository = packageJson.repository;
 const repositoryUrl = typeof repository === "string" ? repository : repository?.url ?? "";
@@ -39,18 +41,37 @@ process.stdout.write([
   repositoryUrl,
 ].join("\n"));
 ' "$PACKAGE_JSON_FILE")"
+  elif command -v jq >/dev/null 2>&1; then
+    PACKAGE_INFO="$(jq -r '
+      [
+        (.name // ""),
+        (.version // ""),
+        (.packageManager // ""),
+        ((.repository // "") | if type == "string" then . else (.url // "") end)
+      ] | .[]
+    ' "$PACKAGE_JSON_FILE")"
+  fi
 
-  PROJECT_NAME="$(printf "%s" "$PACKAGE_INFO" | sed -n '1p')"
-  VERSION="$(printf "%s" "$PACKAGE_INFO" | sed -n '2p')"
-  PACKAGE_MANAGER="$(printf "%s" "$PACKAGE_INFO" | sed -n '3p')"
-  REPOSITORY_URL="$(printf "%s" "$PACKAGE_INFO" | sed -n '4p')"
-  DISPLAY_NAME="$PROJECT_NAME"
+  if [ -n "$PACKAGE_INFO" ]; then
+    PKG_NAME="$(printf "%s" "$PACKAGE_INFO" | sed -n '1p')"
+    VERSION="$(printf "%s" "$PACKAGE_INFO" | sed -n '2p')"
+    PACKAGE_MANAGER="$(printf "%s" "$PACKAGE_INFO" | sed -n '3p')"
+    REPOSITORY_URL="$(printf "%s" "$PACKAGE_INFO" | sed -n '4p')"
+
+    if [ -n "$PKG_NAME" ]; then
+      PROJECT_NAME="$PKG_NAME"
+      DISPLAY_NAME="$PROJECT_NAME"
+    fi
+  fi
 fi
 
 if [ -z "$REPOSITORY_URL" ]; then
   REPOSITORY_URL="$(git -C "$ROOT_DIR" config --get remote.origin.url || true)"
 fi
 
+# NOTE: The fallback URL below is specific to this repository.
+# If this script is copied into another repository, replace or remove this fallback to avoid leaking
+# the readme-md repository URL into the target README.
 if [ -z "$REPOSITORY_URL" ]; then
   REPOSITORY_URL="https://github.com/taeyoon0137/readme-md"
 fi
