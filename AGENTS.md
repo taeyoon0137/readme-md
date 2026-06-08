@@ -190,6 +190,10 @@ https://github.com/taeyoon0137/readme-md 의 AGENTS.md 기준으로,
 - 대상 레포지토리에 `package.json`, `Makefile`, `justfile` 같은 명령 목록이 있고 README 생성 명령을 만들었다면 그 목록에 포함되어야 합니다.
 - 복수의 의미 있는 스크립트가 있는 레포지토리라면 README에 주요 스크립트 목록을 구성하고, README 생성 명령을 만들었다면 그 목록에 포함합니다.
 - README 관련 변경을 이유로 대상 레포지토리의 코드, 설정, 배포, 운영 지침을 임의로 리팩터링하거나 재작성하지 않습니다.
+- README의 H1 제목은 대상 `resources/README.preset.md`에 최종 문구를 직접 작성합니다.
+- README 생성 명령이나 스크립트가 `package.json` 이름, 디렉터리명, git remote, `${projectName}`, `${displayName}` 같은 placeholder로 H1 제목을 생성하거나 덮어쓰지 않습니다.
+- 대상 `resources/README.preset.md`를 만들 때 H1 제목 placeholder는 남겨두지 않고 실제 README 제목으로 확정합니다.
+- H1 제목 규칙은 스크립트의 검증/차단 로직으로 해결하지 않고, 에이전트가 README 원본을 작성할 때 반드시 지켜야 하는 작성 지침으로 적용합니다.
 - README의 `레포지토리 구성` 섹션은 임의의 표로 만들지 않고, `plaintext` 코드블록 tree로 작성합니다.
 - README 목차를 둔 경우 H2 섹션 추가, 삭제, 이름 변경에 맞춰 목차와 anchor 링크를 함께 갱신합니다.
 - 문서 내부 링크, badge 링크, 이미지 링크는 대상 레포지토리 기준의 상대 경로 또는 공개 URL로 유지합니다.
@@ -236,7 +240,7 @@ https://github.com/taeyoon0137/readme-md 의 AGENTS.md 기준으로,
 
 아래 항목은 기본 뼈대이며, 대상 레포지토리에 맞게 줄이거나 늘립니다.
 
-- Hero/Title: 프로젝트 이름, 한 줄 설명, 레포지토리/버전/상태 badge와 주요 기술 스택 badge
+- Hero/Title: README H1 제목은 원본에 직접 작성한 최종 문구를 사용하고, 한 줄 설명, 레포지토리/버전/상태 badge와 주요 기술 스택 badge를 구성합니다.
 - 역할: 이 레포지토리가 무엇을 하고 무엇을 하지 않는지
 - 시작하기: 런타임, 패키지 매니저, 설치와 실행 명령어
 - 주요 흐름: 생성, 빌드, 배포, 운영 반영 같은 핵심 workflow

@@ -26,7 +26,11 @@
   </a>
 </p>
 
-<h1 align="center">${displayName}</h1>
+<!--
+  Write the final README title directly here.
+  Do not leave ${projectName}, ${displayName}, package name, or generated placeholders in the H1.
+-->
+<h1 align="center">프로젝트 이름</h1>
 <p align="center">${description}</p>
 
 <!--
