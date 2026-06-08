@@ -57,7 +57,6 @@ chmod +x ./scripts/readme_update.sh
 
 위 명령은 `resources/README.preset.md`를 기준으로 `README.md`를 만들고, `resources/readme-hero.preset.svg`를 기준으로 `resources/readme-hero.svg`도 함께 생성합니다. `resources/hero.png`, `resources/hero.light.png`, `resources/hero.dark.png` 또는 같은 이름의 JPG 파일이 있으면 존재하는 이미지만 base64로 SVG 안에 내장합니다.
 
-
 <a id="역할"></a>
 
 ## 🧭 역할
