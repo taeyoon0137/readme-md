@@ -86,4 +86,19 @@ ${badgeBlock}
 
 ## 🗂️ 레포지토리 구성
 
-대상 레포지토리의 실제 디렉터리 구조를 작성합니다.
+대상 레포지토리의 실제 디렉터리 구조를 `plaintext` 코드블록 tree로 작성합니다. 임의의 표로 바꾸지 않습니다.
+
+```plaintext
+${projectName}
+├── resources/
+│   ├── README.preset.md        # README 생성 원본
+│   ├── readme-hero.preset.svg  # README 히어로 SVG 원본
+│   └── readme-hero.svg         # README 히어로 SVG 생성 결과물
+├── scripts/
+│   └── readme_update.sh        # README 생성 명령
+├── AGENTS.md                   # 작업 지침
+├── CLAUDE.md                   # AGENTS.md 심볼릭 링크
+└── README.md                   # 자동 생성 결과물
+```
+
+위 tree는 예시입니다. 대상 레포지토리에 실제로 없는 파일이나 디렉터리는 삭제하고, 중요한 source-of-truth, 생성 결과물, 실행 진입점만 남깁니다.
