@@ -174,7 +174,10 @@ perl -0pe '
   s/\$\{repositoryUrl\}/$repository_url/g;
   s/\$\{badgeBlock\}/$badge_block/g;
   s|\.\./resources|./resources|g;
+  s|\.\./agents|./agents|g;
+  s|\.\./scripts|./scripts|g;
   s|\.\./docs|./docs|g;
+  s|\.\./PRESET\.md|./PRESET.md|g;
   s|\.\./AGENTS\.md|./AGENTS.md|g;
   s|\.\./CLAUDE\.md|./CLAUDE.md|g;
 ' "$PROJECT_NAME" "$DISPLAY_NAME" "$REPOSITORY_URL" "$BADGE_BLOCK" "$PRESET_README_FILE" > "$README_FILE"

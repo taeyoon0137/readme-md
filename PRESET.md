@@ -1,11 +1,11 @@
 <!--
   This file (PRESET.md) is a universal template reference for agents.
-  It is NOT a generated artifact itself; this repository's actual README source-of-truth is resources/README.preset.md.
-  When applying it to another repository, create resources/README.preset.md in that repository.
+  It is NOT generated output. This repository's actual README source-of-truth is resources/README.preset.md.
+  When applying this structure to another repository, create resources/README.preset.md in that target repository.
   Use this file as the structural starting point before reading any existing README.md in the target repository.
   Fill this structure with verified project facts; do not derive the preset structure from an existing README.md.
   The generated README.md should keep the auto-generated-file comment below.
-  The "if present" wording in the comment below is intentionally generic for the universal template;
+  The "if present" wording in the comment below is intentionally generic for target repositories;
   this repository's own resources/README.preset.md drops it and names the script directly.
 -->
 
@@ -30,7 +30,7 @@
 -->
 <p align="center">
   <a href="${repositoryUrl}">
-    <img src="../resources/readme-hero.svg" alt="프로젝트 이름 hero image" width="100%" />
+    <img src="../resources/readme-hero.svg" alt="Project hero image" width="100%" />
   </a>
 </p>
 
@@ -38,8 +38,8 @@
   Write the final README title and one-line description directly here.
   Do not leave ${projectName}, ${displayName}, ${description}, package name, or generated placeholders in the H1 or description.
 -->
-<h1 align="center">프로젝트 이름</h1>
-<p align="center">한 줄 설명</p>
+<h1 align="center">Project Name</h1>
+<p align="center">One-line project description.</p>
 
 <!--
   Badge block should include the project's primary technology stack.
@@ -51,40 +51,40 @@ ${badgeBlock}
 <!--
   Remove the scripts item from the table of contents if the repository has no user-facing scripts to document.
 -->
-- [🚀 시작하기](#시작하기)
-- [🧭 역할](#역할)
-- [📦 사용법](#사용법)
-- [🛠️ 스크립트](#스크립트)
-- [🗂️ 레포지토리 구성](#레포지토리-구성)
+- [🚀 Getting Started](#getting-started)
+- [🧭 Role](#role)
+- [📦 Usage](#usage)
+- [🛠️ Scripts](#scripts)
+- [🗂️ Repository Structure](#repository-structure)
 
-<a id="시작하기"></a>
+<a id="getting-started"></a>
 
-## 🚀 시작하기
+## 🚀 Getting Started
 
-대상 레포지토리에서 처음 실행해야 하는 설치/실행 명령을 작성합니다.
+Write the first setup, installation, or run command that a contributor should use in the target repository.
 
-<a id="역할"></a>
+<a id="role"></a>
 
-## 🧭 역할
+## 🧭 Role
 
-대상 레포지토리가 무엇을 하고 무엇을 하지 않는지 작성합니다.
+Write what the target repository does and what it does not do.
 
-<a id="사용법"></a>
+<a id="usage"></a>
 
-## 📦 사용법
+## 📦 Usage
 
-라이브러리, 앱, 문서 레포지토리 성격에 맞는 사용 방법을 작성합니다. 해당 섹션이 필요 없으면 생략합니다.
+Write usage guidance that fits the target repository's role as a library, app, document set, or operations repository. Remove this section if it is not useful.
 
-<a id="스크립트"></a>
+<a id="scripts"></a>
 
-## 🛠️ 스크립트
+## 🛠️ Scripts
 
 <!--
   Remove this section when there are no meaningful user-facing scripts.
   Keep it only when package.json, Makefile, justfile, shell scripts, or a README generation command should be visible to readers.
 -->
 
-대상 레포지토리의 실제 script 목록을 표로 작성합니다. `package.json`, `Makefile`, `justfile`, shell script 등이 여러 개 있으면 README에서 한눈에 볼 수 있게 정리합니다. 문서화할 스크립트가 없으면 이 섹션과 목차 항목을 삭제합니다.
+List the target repository's actual scripts in a table. If `package.json`, `Makefile`, `justfile`, shell scripts, or other command files expose multiple meaningful commands, document them here. If there are no scripts worth documenting, delete this section and its table-of-contents item.
 
 <!--
   README.md is generated.
@@ -94,30 +94,30 @@ ${badgeBlock}
   Remove the <readme command> row if no README generation command is needed.
 -->
 
-| 명령어 | 설명 |
+| Command | Description |
 | :--- | :--- |
-| `<install command>` | 의존성을 설치합니다. |
-| `<dev command>` | 개발 환경을 실행합니다. |
-| `<build command>` | 산출물을 빌드합니다. |
-| `<readme command>` | `resources/README.preset.md`를 기준으로 `README.md`를 재생성합니다. |
+| `<install command>` | Installs dependencies. |
+| `<dev command>` | Starts the development environment. |
+| `<build command>` | Builds the output artifacts. |
+| `<readme command>` | Regenerates `README.md` from `resources/README.preset.md`. |
 
-<a id="레포지토리-구성"></a>
+<a id="repository-structure"></a>
 
-## 🗂️ 레포지토리 구성
+## 🗂️ Repository Structure
 
-대상 레포지토리의 실제 디렉터리 구조를 `plaintext` 코드블록 tree로 작성합니다. 임의의 표로 바꾸지 않습니다.
+Write the target repository's real directory structure as a `plaintext` code-block tree. Do not replace it with an arbitrary table.
 
 ```plaintext
 ${projectName}
 ├── resources/
-│   ├── README.preset.md        # README 생성 원본
-│   ├── readme-hero.preset.svg  # README 히어로 SVG 원본
-│   └── readme-hero.svg         # README 히어로 SVG 생성 결과물
+│   ├── README.preset.md        # Source file for generated README output
+│   ├── readme-hero.preset.svg  # Source SVG wrapper for the README hero
+│   └── readme-hero.svg         # Generated README hero SVG
 ├── scripts/
-│   └── readme_update.sh        # README 생성 명령
-├── AGENTS.md                   # 작업 지침
-├── CLAUDE.md                   # AGENTS.md 심볼릭 링크
-└── README.md                   # 자동 생성 결과물
+│   └── readme_update.sh        # README generation command
+├── AGENTS.md                   # Agent instructions
+├── CLAUDE.md                   # Symbolic link to AGENTS.md
+└── README.md                   # Generated output
 ```
 
-위 tree는 예시입니다. 대상 레포지토리에 실제로 없는 파일이나 디렉터리는 삭제하고, 중요한 source-of-truth, 생성 결과물, 실행 진입점만 남깁니다.
+The tree above is an example. Remove files and directories that do not exist in the target repository, and keep only important source-of-truth files, generated outputs, entry points, and configuration files.
